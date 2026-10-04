@@ -1603,3 +1603,34 @@ body.netflix-theme {
   background: #333;
   color: #fff;
 }
+
+
+/* --- PROFESSIONAL TECHNICAL BADGES (NO VIBE-CODING) --- */
+.guide-tag, .delta-tag, .modal-tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  display: inline-block;
+  line-height: 1;
+}
+
+.guide-tag {
+  background: rgba(255, 255, 255, 0.1);
+  color: #e5e5e5;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.delta-tag {
+  background: rgba(229, 9, 20, 0.2);
+  color: #ff6b6b;
+  border: 1px solid rgba(229, 9, 20, 0.4);
+}
+
+.modal-tag {
+  background: rgba(4, 103, 223, 0.2);
+  color: #58a6ff;
+  border: 1px solid rgba(4, 103, 223, 0.4);
+}

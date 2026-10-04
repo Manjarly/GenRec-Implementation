@@ -233,14 +233,14 @@ async function triggerRecommendation(isUpdate = false) {
         bbEl.textContent = 'meta-llama/Llama-3.2-1B';
         bbEl.className = 'telemetry-val green-text';
         if (tokenBtn) {
-          tokenBtn.textContent = '⚙️ Llama 3.2 Active';
+          tokenBtn.textContent = 'Backbone: Llama 3.2 Active';
           tokenBtn.classList.remove('awaiting-token');
         }
       } else {
         bbEl.textContent = `${data.active_backbone} · Awaiting HF Token`;
         bbEl.className = 'telemetry-val orange-text';
         if (tokenBtn) {
-          tokenBtn.textContent = '🔑 Setup Llama 3.2';
+          tokenBtn.textContent = 'Configure Backbone';
           tokenBtn.classList.add('awaiting-token');
         }
       }
