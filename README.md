@@ -74,7 +74,7 @@ For more than a decade, industrial recommender systems at internet scale (Netfli
 | **Inference Mechanism** | MLP Forward Pass | Autoregressive Token-by-Token | **Prefill-Only (Single Forward Pass)** |
 | **Latency (P50)** | ~5–12 ms | ~500–1,500 ms (Violates SLA) | **~15–24 ms (Production Compliant)** |
 | **Catalog Integrity** | 100% (Constrained embedding table)| Low (Hallucinates fictional titles) | **100% Guaranteed (No text generated)** |
-| **Sample Efficiency** | Baseline ($1.0	imes$) | Moderate | **~40× Fewer Labeled Examples** |
+| **Sample Efficiency** | Baseline ($1.0\times$) | Moderate | **~40× Fewer Labeled Examples** |
 | **Explainability** | Black-box weights | Hallucinated post-hoc text | **Mathematical Attention Attribution** |
 
 ---
@@ -120,9 +120,9 @@ For more than a decade, industrial recommender systems at internet scale (Netfli
 
 ### 1. Context Verbalization Function
 
-Let $H_u = \{(i_1, c_1, r_1, m_1), \dots, (i_n, c_n, r_n, m_n)\}$ denote a user's recent interactions, where $i_k$ is item metadata, $c_k \in [0, 1]$ is completion percentage, $r_k \in \{	ext{ThumbsUp}, 	ext{DoubleThumbsUp}, 	ext{None}\}$ is explicit feedback, and $m_k$ represents viewing telemetry (device, time of day).
+Let $H_u = \{(i_1, c_1, r_1, m_1), \dots, (i_n, c_n, r_n, m_n)\}$ denote a user's recent interactions, where $i_k$ is item metadata, $c_k \in [0, 1]$ is completion percentage, $r_k \in \{\text{ThumbsUp}, \text{DoubleThumbsUp}, \text{None}\}$ is explicit feedback, and $m_k$ represents viewing telemetry (device, time of day).
 
-The verbalizer maps $H_u$ into a dense prompt token sequence $T_u = \mathcal{V}(H_u, m_{	ext{ctx}})$:
+The verbalizer maps $H_u$ into a dense prompt token sequence $T_u = \mathcal{V}(H_u, m_{\text{ctx}})$:
 ```text
 [MEMBER CONTEXT & VIEWING STREAM]
 Context: Device: Smart TV | Time: Evening
@@ -137,32 +137,45 @@ Predict member engagement across candidate catalog items for next watch session.
 
 ### 2. Catalog-Aware Scoring Head (Prefill-Only)
 
-Rather than generating text tokens autoregressively, the token sequence $T_u$ is processed in a single forward prefill pass through the transformer backbone $f_	heta$. The contextual representation at the final active token index $L$ is extracted:
-$$h_u = f_	heta(T_u)_{[:, L, :]} \in \mathbb{R}^{d_{	ext{model}}}$$
+Rather than generating text tokens autoregressively, the token sequence $T_u$ is processed in a single forward prefill pass through the transformer backbone $f_\theta$. The contextual representation at the final active token index $L$ is extracted:
 
-Given candidate items $\mathcal{C} = \{c_1, c_2, \dots, c_K\}$ with learnable catalog embeddings $E_{\mathcal{C}} \in \mathbb{R}^{K 	imes d_{	ext{proj}}}$, the relevance logits are computed as normalized bilinear dot-products scaled by temperature $	au$:
-$$s(u, c_i) = rac{\phi(h_u)^	op \psi(e_{c_i})}{	au}$$
+$$
+h_u = f_\theta(T_u)_{[:, L, :]} \in \mathbb{R}^{d_{\text{model}}}
+$$
 
-Where $\phi: \mathbb{R}^{2048} 	o \mathbb{R}^{128}$ and $\psi: \mathbb{R}^{128} 	o \mathbb{R}^{128}$ are multi-layer projection networks with LayerNorm and GELU activations.
+Given candidate items $\mathcal{C} = \{c_1, c_2, \dots, c_K\}$ with learnable catalog embeddings $E_{\mathcal{C}} \in \mathbb{R}^{K \times d_{\text{proj}}}$, the relevance logits are computed as normalized bilinear dot-products scaled by temperature $\tau$:
+
+$$
+s(u, c_i) = \frac{\phi(h_u)^\top \psi(e_{c_i})}{\tau}
+$$
+
+Where $\phi: \mathbb{R}^{2048} \to \mathbb{R}^{128}$ and $\psi: \mathbb{R}^{128} \to \mathbb{R}^{128}$ are multi-layer projection networks with LayerNorm and GELU activations.
 
 ### 3. Two-Phase Training Pipeline
 
 #### Phase 1: Foundation Domain Adaptation
 To familiarize the general-purpose LLM with entertainment taxonomy, synopses prose, and cinematic transitions, the backbone is continually pre-trained using standard Causal Language Modeling negative log-likelihood:
-$$\mathcal{L}_{	ext{Phase1}}(	heta) = -\sum_{t=1}^{|T|} \log P_	heta(w_t \mid w_{<t})$$
+
+$$
+\mathcal{L}_{\text{Phase1}}(\theta) = -\sum_{t=1}^{|T|} \log P_\theta(w_t \mid w_{<t})
+$$
 
 #### Phase 2: Reward-Weighted Listwise Alignment
 The scoring head and projection layers are fine-tuned to maximize listwise reciprocal ranking quality. Each interaction is assigned an implicit reward weight $r_b \in [0.2, 1.5]$ derived from user engagement (e.g., $r_b = 1.5$ for completed + rewatched titles):
-$$\mathcal{L}_{	ext{Phase2}}(	heta, \phi, \psi) = -\sum_{b=1}^B r_b \cdot \log \left( rac{\exp(s(u, y_b))}{\sum_{c \in \mathcal{C}} \exp(s(u, c))} 
-ight)$$
+
+$$
+\mathcal{L}_{\text{Phase2}}(\theta, \phi, \psi) = -\sum_{b=1}^B r_b \cdot \log \left( \frac{\exp(s(u, y_b))}{\sum_{c \in \mathcal{C}} \exp(s(u, c))} \right)
+$$
 
 ### 4. Attention Attribution Decomposition
 
 To provide transparent, explainable recommendations, the system decomposes the model's projected representation space between the recommended candidate $c_k$ and the historical titles $h_j$:
-$$lpha(c_k, h_j) = rac{\exp\left( rac{\psi(e_{c_k})^	op \psi(e_{h_j})}{	au} 
-ight)}{\sum_{j'=1}^{|H|} \exp\left( rac{\psi(e_{c_k})^	op \psi(e_{h_{j'}})}{	au} 
-ight)}$$
-This produces exact historical attribution percentages (e.g., *“54% driven by Dark, 46% driven by Stranger Things”*).
+
+$$
+\alpha(c_k, h_j) = \frac{\exp\left( \frac{\psi(e_{c_k})^\top \psi(e_{h_j})}{\tau} \right)}{\sum_{j'=1}^{|H|} \exp\left( \frac{\psi(e_{c_k})^\top \psi(e_{h_{j'}})}{\tau} \right)}
+$$
+
+This produces exact historical attribution percentages (e.g., *"54% driven by Dark, 46% driven by Stranger Things"*).
 
 ---
 
