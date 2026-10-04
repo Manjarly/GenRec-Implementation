@@ -11,9 +11,13 @@
 
 ---
 
-<p align="center">
-  <img src="web/assets/hero_banner.jpg" alt="Netflix GenRec Hero Banner" width="100%" style="border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.5);" />
-</p>
+```text
+  _  _     _    __ _ _       ___          ___          
+ | \| |___| |_ / _| (_)_ __ / __|___ _ _ | _ \___ __   
+ | .` / -_)  _|  _| | \ \ /| (_ / -_) ' \|   / -_) _|  
+ |_|\_\___|\__|_| |_|_/_\_\ \___\___|_||_|_|_\___\__|  
+ Production-Grade LLM-Backed Recommendation Ranker (arXiv:2608.10257)
+```
 
 ---
 
@@ -149,12 +153,15 @@ $$\mathcal{L}_{	ext{Phase1}}(	heta) = -\sum_{t=1}^{|T|} \log P_	heta(w_t \mid w_
 
 #### Phase 2: Reward-Weighted Listwise Alignment
 The scoring head and projection layers are fine-tuned to maximize listwise reciprocal ranking quality. Each interaction is assigned an implicit reward weight $r_b \in [0.2, 1.5]$ derived from user engagement (e.g., $r_b = 1.5$ for completed + rewatched titles):
-$$\mathcal{L}_{	ext{Phase2}}(	heta, \phi, \psi) = -\sum_{b=1}^B r_b \cdot \log \left( rac{\exp(s(u, y_b))}{\sum_{c \in \mathcal{C}} \exp(s(u, c))} ight)$$
+$$\mathcal{L}_{	ext{Phase2}}(	heta, \phi, \psi) = -\sum_{b=1}^B r_b \cdot \log \left( rac{\exp(s(u, y_b))}{\sum_{c \in \mathcal{C}} \exp(s(u, c))} 
+ight)$$
 
 ### 4. Attention Attribution Decomposition
 
 To provide transparent, explainable recommendations, the system decomposes the model's projected representation space between the recommended candidate $c_k$ and the historical titles $h_j$:
-$$lpha(c_k, h_j) = rac{\exp\left( rac{\psi(e_{c_k})^	op \psi(e_{h_j})}{	au} ight)}{\sum_{j'=1}^{|H|} \exp\left( rac{\psi(e_{c_k})^	op \psi(e_{h_{j'}})}{	au} ight)}$$
+$$lpha(c_k, h_j) = rac{\exp\left( rac{\psi(e_{c_k})^	op \psi(e_{h_j})}{	au} 
+ight)}{\sum_{j'=1}^{|H|} \exp\left( rac{\psi(e_{c_k})^	op \psi(e_{h_{j'}})}{	au} 
+ight)}$$
 This produces exact historical attribution percentages (e.g., *“54% driven by Dark, 46% driven by Stranger Things”*).
 
 ---
@@ -176,9 +183,18 @@ The repository includes a curated catalog of **50 iconic Netflix titles** across
 
 The included dashboard provides a research-grade interface at `http://localhost:8080`:
 
-<p align="center">
-  <img src="web/assets/posters_sheet.jpg" alt="Netflix GenRec Catalog & Recommendations" width="100%" style="border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.5);" />
-</p>
+```text
+┌────────────────────────────────────────────────────────────────────────────────────────┐
+│                               GENREC RESEARCH DASHBOARD                                │
+├──────────────────────────┬─────────────────────────────┬───────────────────────────────┤
+│ 1. INTERACTIVE STUDIO    │ 2. AI REASONING DRAWER      │ 3. SERVING LATENCY FLAMEGRAPH │
+│ Dynamic watch history    │ Decomposed attention score  │ Prefill single-pass (<20ms)   │
+│ & live rank-shift deltas │ tracing picks to past items │ vs. Autoregressive (>500ms)   │
+├──────────────────────────┴─────────────────────────────┴───────────────────────────────┤
+│ 4. 40× SAMPLE EFFICIENCY SIMULATOR        │ 5. BACKBONE HOT-RELOAD                     │
+│ Data scaling: GenRec vs. Tabular DLRM     │ Gated Meta Llama 3.2-1B / GPT-2 management │
+└───────────────────────────────────────────┴────────────────────────────────────────────┘
+```
 
 ### Key Views & Capabilities:
 1. **Interactive Recommender Studio:**
