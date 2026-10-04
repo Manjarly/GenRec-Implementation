@@ -1,0 +1,1617 @@
+[
+  {
+    "id": 1,
+    "title": "Stranger Things",
+    "type": "Series",
+    "genres": [
+      "Sci-Fi",
+      "Supernatural",
+      "Drama",
+      "Horror"
+    ],
+    "tags": [
+      "80s nostalgia",
+      "small town mystery",
+      "upside down",
+      "telepathy",
+      "friendship"
+    ],
+    "mood": [
+      "suspenseful",
+      "dark",
+      "exciting",
+      "nostalgic"
+    ],
+    "cast": [
+      "Millie Bobby Brown",
+      "Finn Wolfhard",
+      "Winona Ryder",
+      "David Harbour"
+    ],
+    "synopsis": "When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying supernatural forces and one strange little girl.",
+    "release_year": 2016,
+    "maturity_rating": "TV-14",
+    "duration": "4 Seasons"
+  },
+  {
+    "id": 2,
+    "title": "Dark",
+    "type": "Series",
+    "genres": [
+      "Sci-Fi",
+      "Mystery",
+      "Drama",
+      "Thriller"
+    ],
+    "tags": [
+      "time travel",
+      "german",
+      "existential",
+      "family secrets",
+      "mind-bending"
+    ],
+    "mood": [
+      "ominous",
+      "cerebral",
+      "complex",
+      "dark"
+    ],
+    "cast": [
+      "Louis Hofmann",
+      "Oliver Masucci",
+      "J\u00f6rdis Triebel"
+    ],
+    "synopsis": "A missing child sets four families on a frantic hunt for answers as they unearth a mind-bending mystery that spans three generations in a German town.",
+    "release_year": 2017,
+    "maturity_rating": "TV-MA",
+    "duration": "3 Seasons"
+  },
+  {
+    "id": 3,
+    "title": "Black Mirror",
+    "type": "Series",
+    "genres": [
+      "Sci-Fi",
+      "Anthology",
+      "Drama",
+      "Dystopian"
+    ],
+    "tags": [
+      "future tech",
+      "social satire",
+      "dark humor",
+      "existential",
+      "cautionary tale"
+    ],
+    "mood": [
+      "unsettling",
+      "thought-provoking",
+      "cynical",
+      "chilling"
+    ],
+    "cast": [
+      "Daniel Kaluuya",
+      "Bryce Dallas Howard",
+      "Aaron Paul"
+    ],
+    "synopsis": "This sci-fi anthology series explores a twisted, high-tech near-future where humanity's greatest innovations and darkest instincts collide.",
+    "release_year": 2011,
+    "maturity_rating": "TV-MA",
+    "duration": "6 Seasons"
+  },
+  {
+    "id": 4,
+    "title": "Interstellar",
+    "type": "Movie",
+    "genres": [
+      "Sci-Fi",
+      "Adventure",
+      "Drama"
+    ],
+    "tags": [
+      "space exploration",
+      "black hole",
+      "wormhole",
+      "time dilation",
+      "father daughter"
+    ],
+    "mood": [
+      "epic",
+      "emotional",
+      "cerebral",
+      "awe-inspiring"
+    ],
+    "cast": [
+      "Matthew McConaughey",
+      "Anne Hathaway",
+      "Jessica Chastain"
+    ],
+    "synopsis": "With humanity facing extinction on Earth, a team of explorers embarks on a mission beyond this galaxy to discover whether mankind has a future among the stars.",
+    "release_year": 2014,
+    "maturity_rating": "PG-13",
+    "duration": "169 min"
+  },
+  {
+    "id": 5,
+    "title": "Inception",
+    "type": "Movie",
+    "genres": [
+      "Sci-Fi",
+      "Action",
+      "Thriller"
+    ],
+    "tags": [
+      "dream heist",
+      "subconscious",
+      "reality bending",
+      "puzzle",
+      "totem"
+    ],
+    "mood": [
+      "mind-bending",
+      "tense",
+      "fast-paced",
+      "sleek"
+    ],
+    "cast": [
+      "Leonardo DiCaprio",
+      "Joseph Gordon-Levitt",
+      "Elliot Page"
+    ],
+    "synopsis": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
+    "release_year": 2010,
+    "maturity_rating": "PG-13",
+    "duration": "148 min"
+  },
+  {
+    "id": 6,
+    "title": "Mindhunter",
+    "type": "Series",
+    "genres": [
+      "Crime",
+      "Drama",
+      "Psychological Thriller"
+    ],
+    "tags": [
+      "FBI",
+      "serial killers",
+      "criminal profiling",
+      "1970s",
+      "psychology"
+    ],
+    "mood": [
+      "chilling",
+      "clinical",
+      "methodical",
+      "tense"
+    ],
+    "cast": [
+      "Jonathan Groff",
+      "Holt McCallany",
+      "Anna Torv"
+    ],
+    "synopsis": "In the late 1970s, two FBI agents expand criminal science by delving into the psychology of murder and getting uneasily close to all-too-real monsters.",
+    "release_year": 2017,
+    "maturity_rating": "TV-MA",
+    "duration": "2 Seasons"
+  },
+  {
+    "id": 7,
+    "title": "Ozark",
+    "type": "Series",
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "tags": [
+      "money laundering",
+      "drug cartel",
+      "family crime",
+      "missouri",
+      "high stakes"
+    ],
+    "mood": [
+      "gritty",
+      "stressful",
+      "dark",
+      "suspenseful"
+    ],
+    "cast": [
+      "Jason Bateman",
+      "Laura Linney",
+      "Julia Garner"
+    ],
+    "synopsis": "A financial advisor drags his family from Chicago to the Missouri Ozarks, where he must launder $500 million in five years to appease a drug boss.",
+    "release_year": 2017,
+    "maturity_rating": "TV-MA",
+    "duration": "4 Seasons"
+  },
+  {
+    "id": 8,
+    "title": "Breaking Bad",
+    "type": "Series",
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "tags": [
+      "antihero",
+      "meth empire",
+      "chemistry",
+      "morality",
+      "albuquerque"
+    ],
+    "mood": [
+      "intense",
+      "gripping",
+      "gritty",
+      "tragic"
+    ],
+    "cast": [
+      "Bryan Cranston",
+      "Aaron Paul",
+      "Anna Gunn"
+    ],
+    "synopsis": "A chemistry teacher diagnosed with inoperable lung cancer turns to manufacturing and selling methamphetamine with a former student to secure his family's future.",
+    "release_year": 2008,
+    "maturity_rating": "TV-MA",
+    "duration": "5 Seasons"
+  },
+  {
+    "id": 9,
+    "title": "Better Call Saul",
+    "type": "Series",
+    "genres": [
+      "Crime",
+      "Drama",
+      "Legal"
+    ],
+    "tags": [
+      "lawyer",
+      "hustler",
+      "prequel",
+      "moral descent",
+      "brotherly rivalry"
+    ],
+    "mood": [
+      "witty",
+      "tragic",
+      "meticulous",
+      "engrossing"
+    ],
+    "cast": [
+      "Bob Odenkirk",
+      "Rhea Seehorn",
+      "Giancarlo Esposito"
+    ],
+    "synopsis": "The trials and tribulations of criminal lawyer Jimmy McGill in the years leading up to his fateful run-in with Walter White and Jesse Pinkman.",
+    "release_year": 2015,
+    "maturity_rating": "TV-MA",
+    "duration": "6 Seasons"
+  },
+  {
+    "id": 10,
+    "title": "Narcos",
+    "type": "Series",
+    "genres": [
+      "Biography",
+      "Crime",
+      "Drama"
+    ],
+    "tags": [
+      "cartel",
+      "colombia",
+      "DEA",
+      "Pablo Escobar",
+      "true crime"
+    ],
+    "mood": [
+      "raw",
+      "action-packed",
+      "relentless",
+      "dramatic"
+    ],
+    "cast": [
+      "Wagner Moura",
+      "Pedro Pascal",
+      "Boyd Holbrook"
+    ],
+    "synopsis": "A chronicled look at the criminal exploits of Colombian drug lord Pablo Escobar, as well as the many other drug kingpins who plagued the country through the years.",
+    "release_year": 2015,
+    "maturity_rating": "TV-MA",
+    "duration": "3 Seasons"
+  },
+  {
+    "id": 11,
+    "title": "The Good Place",
+    "type": "Series",
+    "genres": [
+      "Comedy",
+      "Fantasy",
+      "Philosophical"
+    ],
+    "tags": [
+      "afterlife",
+      "ethics",
+      "moral philosophy",
+      "twist",
+      "found family"
+    ],
+    "mood": [
+      "heartwarming",
+      "clever",
+      "optimistic",
+      "quirky"
+    ],
+    "cast": [
+      "Kristen Bell",
+      "Ted Danson",
+      "William Jackson Harper"
+    ],
+    "synopsis": "Four people and their otherworldly mentor strive to define what it means to be good as they navigate the peculiar mechanics of the afterlife.",
+    "release_year": 2016,
+    "maturity_rating": "TV-14",
+    "duration": "4 Seasons"
+  },
+  {
+    "id": 12,
+    "title": "Brooklyn Nine-Nine",
+    "type": "Series",
+    "genres": [
+      "Comedy",
+      "Crime",
+      "Workplace"
+    ],
+    "tags": [
+      "police precinct",
+      "detective comedy",
+      "ensemble cast",
+      "heist",
+      "humor"
+    ],
+    "mood": [
+      "hilarious",
+      "feel-good",
+      "fast-paced",
+      "warm"
+    ],
+    "cast": [
+      "Andy Samberg",
+      "Andre Braugher",
+      "Stephanie Beatriz"
+    ],
+    "synopsis": "Comedy series following the exploits of Det. Jake Peralta and his diverse, lovable colleagues as they police the NYPD's 99th Precinct.",
+    "release_year": 2013,
+    "maturity_rating": "TV-14",
+    "duration": "8 Seasons"
+  },
+  {
+    "id": 13,
+    "title": "Schitt's Creek",
+    "type": "Series",
+    "genres": [
+      "Comedy"
+    ],
+    "tags": [
+      "riches to rags",
+      "small town",
+      "eccentric family",
+      "wholesome",
+      "growth"
+    ],
+    "mood": [
+      "hilarious",
+      "touching",
+      "comforting",
+      "sweet"
+    ],
+    "cast": [
+      "Eugene Levy",
+      "Catherine O'Hara",
+      "Dan Levy",
+      "Annie Murphy"
+    ],
+    "synopsis": "When rich video-store magnate Johnny Rose and his family suddenly find themselves broke, they are forced to leave their pampered lives to regroup in Schitt's Creek.",
+    "release_year": 2015,
+    "maturity_rating": "TV-14",
+    "duration": "6 Seasons"
+  },
+  {
+    "id": 14,
+    "title": "The Queen's Gambit",
+    "type": "Series",
+    "genres": [
+      "Drama"
+    ],
+    "tags": [
+      "chess prodigy",
+      "cold war",
+      "addiction",
+      "orphan",
+      "60s aesthetic"
+    ],
+    "mood": [
+      "stylish",
+      "captivating",
+      "inspiring",
+      "intense"
+    ],
+    "cast": [
+      "Anya Taylor-Joy",
+      "Bill Camp",
+      "Marielle Heller"
+    ],
+    "synopsis": "Orphaned at the tender age of nine, prodigious introvert Beth Harmon discovers and masters the game of chess in 1960s USA. But child stardom comes at a price.",
+    "release_year": 2020,
+    "maturity_rating": "TV-MA",
+    "duration": "1 Season"
+  },
+  {
+    "id": 15,
+    "title": "Bridgerton",
+    "type": "Series",
+    "genres": [
+      "Drama",
+      "Romance",
+      "Period Piece"
+    ],
+    "tags": [
+      "regency era",
+      "high society",
+      "scandal sheet",
+      "ballroom romance",
+      "london"
+    ],
+    "mood": [
+      "romantic",
+      "lavish",
+      "dramatic",
+      "scandalous"
+    ],
+    "cast": [
+      "Nicola Coughlan",
+      "Jonathan Bailey",
+      "Phoebe Dynevor"
+    ],
+    "synopsis": "Wealth, lust, and betrayal set against the backdrop of Regency-era England, seen through the eyes of the powerful Bridgerton family.",
+    "release_year": 2020,
+    "maturity_rating": "TV-MA",
+    "duration": "3 Seasons"
+  },
+  {
+    "id": 16,
+    "title": "The Witcher",
+    "type": "Series",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy"
+    ],
+    "tags": [
+      "monster hunter",
+      "magic",
+      "destiny",
+      "sword fighting",
+      "medieval fantasy"
+    ],
+    "mood": [
+      "gritty",
+      "action-packed",
+      "epic",
+      "mystical"
+    ],
+    "cast": [
+      "Henry Cavill",
+      "Anya Chalotra",
+      "Freya Allan"
+    ],
+    "synopsis": "Geralt of Rivia, a solitary monster hunter, struggles to find his place in a world where people often prove more wicked than beasts.",
+    "release_year": 2019,
+    "maturity_rating": "TV-MA",
+    "duration": "3 Seasons"
+  },
+  {
+    "id": 17,
+    "title": "Arcane",
+    "type": "Series",
+    "genres": [
+      "Animation",
+      "Action",
+      "Sci-Fi",
+      "Fantasy"
+    ],
+    "tags": [
+      "piltover and zaun",
+      "sisters",
+      "hextech",
+      "steampunk",
+      "class conflict"
+    ],
+    "mood": [
+      "stunning",
+      "heartbreaking",
+      "exhilarating",
+      "masterpiece"
+    ],
+    "cast": [
+      "Hailee Steinfeld",
+      "Ella Purnell",
+      "Kevin Alejandro"
+    ],
+    "synopsis": "Set in the utopian region of Piltover and the oppressed underground of Zaun, the story follows the origins of two iconic League champions-and the power that will tear them apart.",
+    "release_year": 2021,
+    "maturity_rating": "TV-14",
+    "duration": "2 Seasons"
+  },
+  {
+    "id": 18,
+    "title": "Squid Game",
+    "type": "Series",
+    "genres": [
+      "Action",
+      "Drama",
+      "Mystery",
+      "Thriller"
+    ],
+    "tags": [
+      "survival game",
+      "korean",
+      "social inequality",
+      "childhood games",
+      "dystopian"
+    ],
+    "mood": [
+      "shocking",
+      "gripping",
+      "brutal",
+      "unsettling"
+    ],
+    "cast": [
+      "Lee Jung-jae",
+      "Park Hae-soo",
+      "Wi Ha-joon"
+    ],
+    "synopsis": "Hundreds of cash-strapped players accept a strange invitation to compete in children's games. Inside, a tempting prize awaits with deadly high stakes.",
+    "release_year": 2021,
+    "maturity_rating": "TV-MA",
+    "duration": "2 Seasons"
+  },
+  {
+    "id": 19,
+    "title": "Extraction",
+    "type": "Movie",
+    "genres": [
+      "Action",
+      "Thriller"
+    ],
+    "tags": [
+      "mercenary",
+      "one-shot action",
+      "rescue mission",
+      "dhaka",
+      "gunfights"
+    ],
+    "mood": [
+      "adrenaline-fueled",
+      "gritty",
+      "explosive",
+      "tense"
+    ],
+    "cast": [
+      "Chris Hemsworth",
+      "Rudhraksh Jaiswal",
+      "Randeep Hooda"
+    ],
+    "synopsis": "Tyler Rake, a fearless black market mercenary, embarks on the most deadly extraction of his career when he's enlisted to rescue the kidnapped son of an imprisoned international crime lord.",
+    "release_year": 2020,
+    "maturity_rating": "R",
+    "duration": "116 min"
+  },
+  {
+    "id": 20,
+    "title": "Glass Onion: A Knives Out Mystery",
+    "type": "Movie",
+    "genres": [
+      "Comedy",
+      "Crime",
+      "Mystery"
+    ],
+    "tags": [
+      "whodunit",
+      "tech billionaire",
+      "greece",
+      "detective",
+      "eccentric suspects"
+    ],
+    "mood": [
+      "clever",
+      "fun",
+      "breezy",
+      "suspenseful"
+    ],
+    "cast": [
+      "Daniel Craig",
+      "Edward Norton",
+      "Janelle Mon\u00e1e"
+    ],
+    "synopsis": "Famed Southern detective Benoit Blanc travels to Greece for his latest case, peeling back the layers of a mystery involving a tech billionaire and his eclectic crew of friends.",
+    "release_year": 2022,
+    "maturity_rating": "PG-13",
+    "duration": "139 min"
+  },
+  {
+    "id": 21,
+    "title": "Our Planet",
+    "type": "Series",
+    "genres": [
+      "Documentary"
+    ],
+    "tags": [
+      "nature",
+      "wildlife",
+      "climate change",
+      "david attenborough",
+      "breathtaking photography"
+    ],
+    "mood": [
+      "awe-inspiring",
+      "poignant",
+      "majestic",
+      "eye-opening"
+    ],
+    "cast": [
+      "David Attenborough"
+    ],
+    "synopsis": "Experience our planet's natural beauty and examine how climate change impacts all living creatures in this ambitious documentary of spectacular scope.",
+    "release_year": 2019,
+    "maturity_rating": "TV-G",
+    "duration": "2 Seasons"
+  },
+  {
+    "id": 22,
+    "title": "Formula 1: Drive to Survive",
+    "type": "Series",
+    "genres": [
+      "Documentary",
+      "Sport"
+    ],
+    "tags": [
+      "motorsport",
+      "racing",
+      "behind the scenes",
+      "rivalry",
+      "high pressure"
+    ],
+    "mood": [
+      "exhilarating",
+      "dramatic",
+      "fast-paced",
+      "intense"
+    ],
+    "cast": [
+      "Lewis Hamilton",
+      "Max Verstappen",
+      "Toto Wolff",
+      "Christian Horner"
+    ],
+    "synopsis": "Drivers, managers and team owners live life in the fast lane \u2014 both on and off the track \u2014 during each cutthroat season of Formula 1 racing.",
+    "release_year": 2019,
+    "maturity_rating": "TV-MA",
+    "duration": "6 Seasons"
+  },
+  {
+    "id": 23,
+    "title": "The Last Dance",
+    "type": "Series",
+    "genres": [
+      "Documentary",
+      "Biography",
+      "History",
+      "Sport"
+    ],
+    "tags": [
+      "chicago bulls",
+      "michael jordan",
+      "basketball",
+      "dynasty",
+      "90s"
+    ],
+    "mood": [
+      "electrifying",
+      "inspirational",
+      "competitive",
+      "nostalgic"
+    ],
+    "cast": [
+      "Michael Jordan",
+      "Scottie Pippen",
+      "Dennis Rodman",
+      "Phil Jackson"
+    ],
+    "synopsis": "Charting the rise of the 1990s Chicago Bulls, led by Michael Jordan, one of the most notable dynasties in sports history.",
+    "release_year": 2020,
+    "maturity_rating": "TV-MA",
+    "duration": "1 Season"
+  },
+  {
+    "id": 24,
+    "title": "Dune",
+    "type": "Movie",
+    "genres": [
+      "Sci-Fi",
+      "Adventure",
+      "Drama"
+    ],
+    "tags": [
+      "desert planet",
+      "spice",
+      "prophecy",
+      "sandworms",
+      "galactic empire"
+    ],
+    "mood": [
+      "epic",
+      "hypnotic",
+      "grandiose",
+      "mystical"
+    ],
+    "cast": [
+      "Timoth\u00e9e Chalamet",
+      "Zendaya",
+      "Rebecca Ferguson",
+      "Oscar Isaac"
+    ],
+    "synopsis": "A noble family becomes embroiled in a war for control over the galaxy's most valuable asset while its heir becomes troubled by visions of a dark future.",
+    "release_year": 2021,
+    "maturity_rating": "PG-13",
+    "duration": "155 min"
+  },
+  {
+    "id": 25,
+    "title": "Cyberpunk: Edgerunners",
+    "type": "Series",
+    "genres": [
+      "Animation",
+      "Action",
+      "Sci-Fi"
+    ],
+    "tags": [
+      "night city",
+      "cybernetics",
+      "mercenary",
+      "tragedy",
+      "neon dystopia"
+    ],
+    "mood": [
+      "frenetic",
+      "stylish",
+      "emotional",
+      "explosive"
+    ],
+    "cast": [
+      "Aoi Yuuki",
+      "KENN",
+      "Hiroki Touchi"
+    ],
+    "synopsis": "A street kid trying to survive in a technology and body modification-obsessed city of the future chooses to stay alive by becoming an edgerunner: a mercenary outlaw.",
+    "release_year": 2022,
+    "maturity_rating": "TV-MA",
+    "duration": "1 Season"
+  },
+  {
+    "id": 26,
+    "title": "Wednesday",
+    "type": "Series",
+    "genres": [
+      "Comedy",
+      "Fantasy",
+      "Mystery",
+      "Supernatural"
+    ],
+    "tags": [
+      "outcast academy",
+      "gothic",
+      "detective mystery",
+      "macabre",
+      "monsters"
+    ],
+    "mood": [
+      "quirky",
+      "dark",
+      "clever",
+      "supernatural"
+    ],
+    "cast": [
+      "Jenna Ortega",
+      "Gwendoline Christie",
+      "Riki Lindhome"
+    ],
+    "synopsis": "Smart, sarcastic and a little dead inside, Wednesday Addams investigates a murder spree while making new friends \u2014 and foes \u2014 at Nevermore Academy.",
+    "release_year": 2022,
+    "maturity_rating": "TV-14",
+    "duration": "1 Season"
+  },
+  {
+    "id": 27,
+    "title": "Beef",
+    "type": "Series",
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "tags": [
+      "road rage",
+      "revenge",
+      "existential dread",
+      "dark comedy",
+      "escalation"
+    ],
+    "mood": [
+      "stressful",
+      "unhinged",
+      "darkly funny",
+      "relentless"
+    ],
+    "cast": [
+      "Steven Yeun",
+      "Ali Wong",
+      "Joseph Lee",
+      "Young Mazino"
+    ],
+    "synopsis": "A road rage incident between two strangers \u2014 a failing contractor and an unfulfilled entrepreneur \u2014 brings out their darkest impulses in a spiral of vengeance.",
+    "release_year": 2023,
+    "maturity_rating": "TV-MA",
+    "duration": "1 Season"
+  },
+  {
+    "id": 28,
+    "title": "Baby Reindeer",
+    "type": "Series",
+    "genres": [
+      "Drama",
+      "Thriller",
+      "Psychological"
+    ],
+    "tags": [
+      "stalking",
+      "trauma",
+      "standup comedy",
+      "obsessive",
+      "based on a true story"
+    ],
+    "mood": [
+      "unsettling",
+      "intense",
+      "raw",
+      "claustrophobic"
+    ],
+    "cast": [
+      "Richard Gadd",
+      "Jessica Gunning",
+      "Nava Mau"
+    ],
+    "synopsis": "When a struggling comedian shows one act of kindness to a vulnerable woman, it unleashes a suffocating obsession that threatens to wreck both of their lives.",
+    "release_year": 2024,
+    "maturity_rating": "TV-MA",
+    "duration": "1 Season"
+  },
+  {
+    "id": 29,
+    "title": "Ripley",
+    "type": "Series",
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller",
+      "Noir"
+    ],
+    "tags": [
+      "con artist",
+      "italy",
+      "black and white",
+      "forgery",
+      "identity theft"
+    ],
+    "mood": [
+      "methodical",
+      "cold",
+      "stylish",
+      "suspenseful"
+    ],
+    "cast": [
+      "Andrew Scott",
+      "Dakota Fanning",
+      "Johnny Flynn"
+    ],
+    "synopsis": "A grifter in 1960s New York is hired by a wealthy man to travel to Italy and convince his vagabond son to return home. But entering his life becomes the first step into a dark web of deception.",
+    "release_year": 2024,
+    "maturity_rating": "TV-MA",
+    "duration": "1 Season"
+  },
+  {
+    "id": 30,
+    "title": "3 Body Problem",
+    "type": "Series",
+    "genres": [
+      "Sci-Fi",
+      "Mystery",
+      "Drama",
+      "Adventure"
+    ],
+    "tags": [
+      "extraterrestrial contact",
+      "nanotechnology",
+      "astronomy",
+      "scientific conspiracy"
+    ],
+    "mood": [
+      "cerebral",
+      "epic",
+      "existential",
+      "high-stakes"
+    ],
+    "cast": [
+      "Jess Hong",
+      "Liam Cunningham",
+      "Eiza Gonz\u00e1lez",
+      "Benedict Wong"
+    ],
+    "synopsis": "A fateful decision in 1960s China echoes across space and time to a group of scientists in the present, forcing them to face humanity's greatest existential threat.",
+    "release_year": 2024,
+    "maturity_rating": "TV-MA",
+    "duration": "1 Season"
+  },
+  {
+    "id": 31,
+    "title": "Money Heist (La Casa de Papel)",
+    "type": "Series",
+    "genres": [
+      "Action",
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "tags": [
+      "royal mint",
+      "the professor",
+      "mastermind",
+      "hostages",
+      "heist plan"
+    ],
+    "mood": [
+      "high-adrenaline",
+      "tactical",
+      "emotional",
+      "intense"
+    ],
+    "cast": [
+      "\u00darsula Corber\u00f3",
+      "\u00c1lvaro Morte",
+      "Itziar Itu\u00f1o",
+      "Pedro Alonso"
+    ],
+    "synopsis": "An unusual group of robbers attempt to carry out the most perfect robbery in Spanish history \u2014 stealing 2.4 billion euros from the Royal Mint of Spain.",
+    "release_year": 2017,
+    "maturity_rating": "TV-MA",
+    "duration": "5 Seasons"
+  },
+  {
+    "id": 32,
+    "title": "Peaky Blinders",
+    "type": "Series",
+    "genres": [
+      "Crime",
+      "Drama",
+      "Period Piece"
+    ],
+    "tags": [
+      "birmingham",
+      "gangsters",
+      "razor blades",
+      "post-ww1",
+      "political corruption"
+    ],
+    "mood": [
+      "gritty",
+      "stylish",
+      "brooding",
+      "badass"
+    ],
+    "cast": [
+      "Cillian Murphy",
+      "Paul Anderson",
+      "Helen McCrory",
+      "Tom Hardy"
+    ],
+    "synopsis": "A notorious gang in 1919 Birmingham, England, is led by the fierce Tommy Shelby, a crime boss set on moving up in the world no matter the cost.",
+    "release_year": 2013,
+    "maturity_rating": "TV-MA",
+    "duration": "6 Seasons"
+  },
+  {
+    "id": 33,
+    "title": "The Crown",
+    "type": "Series",
+    "genres": [
+      "Biography",
+      "Drama",
+      "History"
+    ],
+    "tags": [
+      "british royalty",
+      "queen elizabeth ii",
+      "politics",
+      "buckingham palace",
+      "dynasty"
+    ],
+    "mood": [
+      "majestic",
+      "restrained",
+      "prestige",
+      "intimate"
+    ],
+    "cast": [
+      "Claire Foy",
+      "Olivia Colman",
+      "Imelda Staunton",
+      "Matt Smith"
+    ],
+    "synopsis": "Follows the political rivalries and romance of Queen Elizabeth II's reign and the events that shaped the second half of the twentieth century.",
+    "release_year": 2016,
+    "maturity_rating": "TV-MA",
+    "duration": "6 Seasons"
+  },
+  {
+    "id": 34,
+    "title": "One Piece (Live Action)",
+    "type": "Series",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy",
+      "Comedy"
+    ],
+    "tags": [
+      "straw hat pirates",
+      "devil fruit",
+      "grand line",
+      "treasure",
+      "camaraderie"
+    ],
+    "mood": [
+      "exuberant",
+      "fun",
+      "adventurous",
+      "heartfelt"
+    ],
+    "cast": [
+      "I\u00f1aki Godoy",
+      "Emily Rudd",
+      "Mackenyu",
+      "Jacob Romero"
+    ],
+    "synopsis": "With his straw hat and ragtag crew, young pirate Monkey D. Luffy sets out on an epic voyage for treasure in this live-action adaptation of the popular manga.",
+    "release_year": 2023,
+    "maturity_rating": "TV-14",
+    "duration": "1 Season"
+  },
+  {
+    "id": 35,
+    "title": "Blue Eye Samurai",
+    "type": "Series",
+    "genres": [
+      "Animation",
+      "Action",
+      "Adventure",
+      "Drama"
+    ],
+    "tags": [
+      "edo japan",
+      "revenge",
+      "master swordsman",
+      "forging steel",
+      "identity"
+    ],
+    "mood": [
+      "masterpiece",
+      "visceral",
+      "cinematic",
+      "uncompromising"
+    ],
+    "cast": [
+      "Maya Erskine",
+      "Masi Oka",
+      "Brenda Song",
+      "Kenneth Branagh"
+    ],
+    "synopsis": "In Edo-period Japan, a mixed-race master of the sword lives a life in disguise while seeking revenge against the four white men who illegally remain in Japan.",
+    "release_year": 2023,
+    "maturity_rating": "TV-MA",
+    "duration": "1 Season"
+  },
+  {
+    "id": 36,
+    "title": "Love, Death & Robots",
+    "type": "Series",
+    "genres": [
+      "Animation",
+      "Sci-Fi",
+      "Action",
+      "Anthology"
+    ],
+    "tags": [
+      "cyborgs",
+      "alien warfare",
+      "alternate history",
+      "hyper-stylized",
+      "ai apocalypse"
+    ],
+    "mood": [
+      "mind-bending",
+      "frenetic",
+      "inventive",
+      "wild"
+    ],
+    "cast": [
+      "Scott Whyte",
+      "Nolan North",
+      "Emily O'Brien"
+    ],
+    "synopsis": "Terrifying creatures, wicked surprises and dark comedy converge in this NSFW anthology of animated stories presented by Tim Miller and David Fincher.",
+    "release_year": 2019,
+    "maturity_rating": "TV-MA",
+    "duration": "3 Volumes"
+  },
+  {
+    "id": 37,
+    "title": "Castlevania",
+    "type": "Series",
+    "genres": [
+      "Animation",
+      "Action",
+      "Adventure",
+      "Fantasy"
+    ],
+    "tags": [
+      "dracula",
+      "vampire hunter",
+      "magic",
+      "belmont",
+      "bloody combat"
+    ],
+    "mood": [
+      "gothic",
+      "epic",
+      "brutal",
+      "tragic"
+    ],
+    "cast": [
+      "Richard Armitage",
+      "James Callis",
+      "Graham McTavish"
+    ],
+    "synopsis": "A vampire hunter fights to save a besieged city from an army of otherworldly beasts controlled by Dracula himself.",
+    "release_year": 2017,
+    "maturity_rating": "TV-MA",
+    "duration": "4 Seasons"
+  },
+  {
+    "id": 38,
+    "title": "Altered Carbon",
+    "type": "Series",
+    "genres": [
+      "Sci-Fi",
+      "Action",
+      "Drama",
+      "Cyberpunk"
+    ],
+    "tags": [
+      "cortical stacks",
+      "immortality",
+      "neon city",
+      "murder investigation",
+      "sleeves"
+    ],
+    "mood": [
+      "cyberpunk",
+      "sleek",
+      "gritty",
+      "philosophical"
+    ],
+    "cast": [
+      "Joel Kinnaman",
+      "Anthony Mackie",
+      "James Purefoy"
+    ],
+    "synopsis": "Set in a future where consciousness is digitized and stored in stacks, a prisoner returns to life in a new body to solve the murder of the richest man in the world.",
+    "release_year": 2018,
+    "maturity_rating": "TV-MA",
+    "duration": "2 Seasons"
+  },
+  {
+    "id": 39,
+    "title": "BoJack Horseman",
+    "type": "Series",
+    "genres": [
+      "Animation",
+      "Comedy",
+      "Drama"
+    ],
+    "tags": [
+      "hollywoo",
+      "existentialism",
+      "depression",
+      "satire",
+      "has-been actor"
+    ],
+    "mood": [
+      "hilarious",
+      "devastating",
+      "biting",
+      "profound"
+    ],
+    "cast": [
+      "Will Arnett",
+      "Amy Sedaris",
+      "Alison Brie",
+      "Aaron Paul"
+    ],
+    "synopsis": "Meet the most beloved sitcom horse of the '90s, 20 years later. He's a curmudgeon with a heart of... not quite gold... but something like bronze.",
+    "release_year": 2014,
+    "maturity_rating": "TV-MA",
+    "duration": "6 Seasons"
+  },
+  {
+    "id": 40,
+    "title": "Cunk on Earth",
+    "type": "Series",
+    "genres": [
+      "Comedy",
+      "Mockumentary",
+      "History"
+    ],
+    "tags": [
+      "philandering history",
+      "deadpan",
+      "academic interviews",
+      "civilization",
+      "hilarious"
+    ],
+    "mood": [
+      "absurdist",
+      "deadpan",
+      "laugh-out-loud",
+      "satirical"
+    ],
+    "cast": [
+      "Diane Morgan"
+    ],
+    "synopsis": "Philomena Cunk travels the world and interviews real academics to explore the history of human civilization from early mankind to the modern day.",
+    "release_year": 2022,
+    "maturity_rating": "TV-MA",
+    "duration": "1 Season"
+  },
+  {
+    "id": 41,
+    "title": "Don't Look Up",
+    "type": "Movie",
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Sci-Fi"
+    ],
+    "tags": [
+      "comet apocalypse",
+      "media circus",
+      "politics",
+      "climate satire",
+      "astronomy"
+    ],
+    "mood": [
+      "cynical",
+      "manic",
+      "hilarious",
+      "sobering"
+    ],
+    "cast": [
+      "Leonardo DiCaprio",
+      "Jennifer Lawrence",
+      "Meryl Streep",
+      "Cate Blanchett"
+    ],
+    "synopsis": "Two low-level astronomers must go on a giant media tour to warn mankind of an approaching comet that will destroy planet Earth.",
+    "release_year": 2021,
+    "maturity_rating": "R",
+    "duration": "138 min"
+  },
+  {
+    "id": 42,
+    "title": "Roma",
+    "type": "Movie",
+    "genres": [
+      "Drama",
+      "International"
+    ],
+    "tags": [
+      "mexico city 1970s",
+      "domestic worker",
+      "cinematography",
+      "family drama",
+      "black and white"
+    ],
+    "mood": [
+      "poetic",
+      "intimate",
+      "monumental",
+      "heartbreaking"
+    ],
+    "cast": [
+      "Yalitza Aparicio",
+      "Marina de Tavira",
+      "Diego Cortina Autrey"
+    ],
+    "synopsis": "A vivid portrait of domestic turmoil and social hierarchy amidst political turmoil in 1970s Mexico, directed by Alfonso Cuar\u00f3n.",
+    "release_year": 2018,
+    "maturity_rating": "R",
+    "duration": "135 min"
+  },
+  {
+    "id": 43,
+    "title": "All Quiet on the Western Front",
+    "type": "Movie",
+    "genres": [
+      "Action",
+      "Drama",
+      "War"
+    ],
+    "tags": [
+      "ww1 trenches",
+      "german perspective",
+      "brutality of war",
+      "remarque",
+      "survival"
+    ],
+    "mood": [
+      "harrowing",
+      "visceral",
+      "anti-war",
+      "haunting"
+    ],
+    "cast": [
+      "Felix Kammerer",
+      "Albrecht Schuch",
+      "Daniel Br\u00fchl"
+    ],
+    "synopsis": "A young German soldier's terrifying experiences and distress on the western front during World War I.",
+    "release_year": 2022,
+    "maturity_rating": "R",
+    "duration": "148 min"
+  },
+  {
+    "id": 44,
+    "title": "Society of the Snow",
+    "type": "Movie",
+    "genres": [
+      "Adventure",
+      "Biography",
+      "Drama"
+    ],
+    "tags": [
+      "andes crash",
+      "rugby team",
+      "survival against all odds",
+      "mountain cold",
+      "fellowship"
+    ],
+    "mood": [
+      "inspiring",
+      "gripping",
+      "emotional",
+      "triumph of human spirit"
+    ],
+    "cast": [
+      "Enzo Vogrincic",
+      "Agust\u00edn Pardella",
+      "Mat\u00edas Recalt"
+    ],
+    "synopsis": "In 1972, a Uruguayan rugby team's plane crashes in the heart of the Andes mountains. To survive, the passengers must rely on each other in an extreme frozen wilderness.",
+    "release_year": 2023,
+    "maturity_rating": "R",
+    "duration": "144 min"
+  },
+  {
+    "id": 45,
+    "title": "Wild Wild Country",
+    "type": "Series",
+    "genres": [
+      "Documentary",
+      "Crime"
+    ],
+    "tags": [
+      "rajneeshpuram",
+      "cult",
+      "oregon commune",
+      "bioterrorism",
+      "sheela"
+    ],
+    "mood": [
+      "bizarre",
+      "gripping",
+      "mind-boggling",
+      "suspenseful"
+    ],
+    "cast": [
+      "Ma Anand Sheela",
+      "Osho",
+      "Jane Stork"
+    ],
+    "synopsis": "When a controversial cult leader builds a utopian city in the Oregon desert, conflict with the locals escalates into an international scandal and bioterrorism investigation.",
+    "release_year": 2018,
+    "maturity_rating": "TV-MA",
+    "duration": "1 Season"
+  },
+  {
+    "id": 46,
+    "title": "Beckham",
+    "type": "Series",
+    "genres": [
+      "Documentary",
+      "Biography",
+      "Sport"
+    ],
+    "tags": [
+      "david beckham",
+      "manchester united",
+      "football legend",
+      "fame",
+      "victoria beckham"
+    ],
+    "mood": [
+      "intimate",
+      "candid",
+      "nostalgic",
+      "inspiring"
+    ],
+    "cast": [
+      "David Beckham",
+      "Victoria Beckham",
+      "Alex Ferguson"
+    ],
+    "synopsis": "With never-before-seen footage, this docuseries follows David Beckham's meteoric rise from humble working-class beginnings to global football and cultural stardom.",
+    "release_year": 2023,
+    "maturity_rating": "TV-MA",
+    "duration": "1 Season"
+  },
+  {
+    "id": 47,
+    "title": "Tour de France: Unchained",
+    "type": "Series",
+    "genres": [
+      "Documentary",
+      "Sport"
+    ],
+    "tags": [
+      "cycling",
+      "pyrenees",
+      "pain cave",
+      "yellow jersey",
+      "team tactics"
+    ],
+    "mood": [
+      "adrenaline-fueled",
+      "exhausting",
+      "epic",
+      "dramatic"
+    ],
+    "cast": [
+      "Jonas Vingegaard",
+      "Tadej Poga\u010dar",
+      "Wout van Aert"
+    ],
+    "synopsis": "Through tears and triumph, this series follows several cycling teams as they compete in the 2022 and 2023 Tour de France, the world's most grueling bike race.",
+    "release_year": 2023,
+    "maturity_rating": "TV-MA",
+    "duration": "2 Seasons"
+  },
+  {
+    "id": 48,
+    "title": "Guillermo del Toro's Pinocchio",
+    "type": "Movie",
+    "genres": [
+      "Animation",
+      "Drama",
+      "Family",
+      "Fantasy"
+    ],
+    "tags": [
+      "stop-motion",
+      "fascist italy",
+      "father and son",
+      "dark fairy tale",
+      "wood carving"
+    ],
+    "mood": [
+      "poignant",
+      "enchanting",
+      "dark",
+      "heartfelt"
+    ],
+    "cast": [
+      "Ewan McGregor",
+      "David Bradley",
+      "Gregory Mann",
+      "Tilda Swinton"
+    ],
+    "synopsis": "Academy Award-winning filmmaker Guillermo del Toro reinvents the classic tale of the wooden marionette who is magically brought to life in 1930s Italy.",
+    "release_year": 2022,
+    "maturity_rating": "PG",
+    "duration": "117 min"
+  },
+  {
+    "id": 49,
+    "title": "The Gentlemen",
+    "type": "Series",
+    "genres": [
+      "Action",
+      "Comedy",
+      "Crime"
+    ],
+    "tags": [
+      "british aristocracy",
+      "weed empire",
+      "guy ritchie",
+      "gangsters",
+      "country estate"
+    ],
+    "mood": [
+      "slick",
+      "funny",
+      "stylish",
+      "chaotic"
+    ],
+    "cast": [
+      "Theo James",
+      "Kaya Scodelario",
+      "Daniel Ings",
+      "Giancarlo Esposito"
+    ],
+    "synopsis": "When aristocratic Eddie inherits the family estate, he discovers that it's home to an enormous weed empire \u2014 and its proprietors aren't going anywhere.",
+    "release_year": 2024,
+    "maturity_rating": "TV-MA",
+    "duration": "1 Season"
+  },
+  {
+    "id": 50,
+    "title": "Heartstopper",
+    "type": "Series",
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "tags": [
+      "coming of age",
+      "lgbtq+",
+      "british school",
+      "first love",
+      "wholesome"
+    ],
+    "mood": [
+      "wholesome",
+      "sweet",
+      "tender",
+      "uplifting"
+    ],
+    "cast": [
+      "Joe Locke",
+      "Kit Connor",
+      "William Gao",
+      "Yasmin Finney"
+    ],
+    "synopsis": "Teens Charlie and Nick discover their unlikely friendship might be something more as they navigate school and young love in this coming-of-age series.",
+    "release_year": 2022,
+    "maturity_rating": "TV-14",
+    "duration": "2 Seasons"
+  }
+]

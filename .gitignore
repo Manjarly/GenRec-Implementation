@@ -1,0 +1,6 @@
+# Environment and sensitive keys
+.env
+*.tmp
+__pycache__/
+*.pyc
+.DS_Store
