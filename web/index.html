@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Netflix GenRec | Interactive Research Walkthrough</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="netflix-theme">
+
+  <!-- TOP APP BAR -->
+  <header class="top-bar">
+    <div class="top-bar-left">
+      <div class="brand-title">
+        <span class="netflix-red-text">NETFLIX</span>
+        <span class="brand-divider">/</span>
+        <span class="brand-sub">RESEARCH PLATFORM</span>
+      </div>
+      <div class="paper-badge">
+        <span>arXiv:2608.10257</span>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <nav class="top-nav-tabs">
+      <button class="nav-btn active" data-tab="recommender">1. Live Recommender</button>
+      <button class="nav-btn" data-tab="context-studio">2. Context Engineering</button>
+      <button class="nav-btn" data-tab="serving-latency">3. Serving Latency & Flamegraph</button>
+      <button class="nav-btn" data-tab="sample-efficiency">4. 40× Sample Efficiency</button>
+      <button class="nav-btn" data-tab="architecture">5. Paper Blueprint</button>
+    </nav>
+
+    <!-- Audience Mode Toggle -->
+    <div class="audience-mode-toggle">
+      <span class="toggle-label">Explanation Mode:</span>
+      <div class="toggle-pill">
+        <button class="mode-btn active" id="btn-mode-plain">Plain English</button>
+        <button class="mode-btn" id="btn-mode-tech">Technical Deep-Dive</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- GUIDED ONBOARDING BANNER (FIRST TIME VISITOR) -->
+  <section class="guided-banner">
+    <div class="guided-banner-content">
+      <div class="guided-header-row">
+        <div class="guided-title">
+          <span class="icon-sparkle">💡</span>
+          <strong>What is this website? (The 30-Second Summary)</strong>
+        </div>
+        <button class="collapse-btn" id="btn-toggle-guide">Hide Guide ▴</button>
+      </div>
+      <div class="guided-body" id="guided-body">
+        <p class="mode-plain-text">
+          Netflix recently published a landmark paper called <strong>GenRec</strong>. 
+          Historically, Netflix used massive spreadsheets of numbers and hand-coded math to guess what movie you want to watch. 
+          <strong>GenRec replaces that by using Large Language Models (LLMs)</strong>: it writes a short paragraph describing what you watched, reads it with an AI model, and predicts what you will love next in just <strong>15 milliseconds</strong>.
+        </p>
+        <p class="mode-tech-text" style="display: none;">
+          This system demonstrates <strong>GenRec: An LLM-Backed Recommendation Ranker at Netflix (arXiv:2608.10257)</strong>.
+          It replaces multi-hot feature crossings with <strong>Prompt Verbalization (Context Engineering)</strong>, 
+          employs a <strong>Two-Phase Training Pipeline</strong> (Causal LM domain adaptation + reward-weighted listwise alignment),
+          and solves the production latency SLA through a <strong>Prefill-Only Catalog-Aware Scoring Head</strong>.
+        </p>
+
+        <div class="guided-steps">
+          <div class="step-item">
+            <span class="step-num">1</span>
+            <div><strong>Pick or Modify History</strong>: Add/remove movies you watched.</div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">2</span>
+            <div><strong>Watch the Model Adapt</strong>: See the verbalized story update live.</div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">3</span>
+            <div><strong>Inspect Any Pick</strong>: Click any title to see <em>which of your past watches caused it</em>.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIEW 1: INTERACTIVE RECOMMENDER -->
+  <main class="view-content active" id="view-recommender">
+    
+    <!-- TOP NOTIFICATION FOR RANK CHANGES -->
+    <div class="rank-delta-banner" id="rank-delta-banner" style="display: none;">
+      <span class="delta-icon">⚡</span>
+      <span id="rank-delta-text">Recommendation order updated live!</span>
+      <button class="dismiss-delta-btn" id="btn-dismiss-delta">✕</button>
+    </div>
+
+    <div class="recommender-layout">
+      
+      <!-- LEFT COLUMN: WATCH HISTORY BUILDER -->
+      <aside class="sidebar-panel">
+        <div class="panel-card">
+          <div class="panel-title-row">
+            <div>
+              <h3>Your Active Watch History</h3>
+              <p class="panel-desc">This is the input signal fed to GenRec.</p>
+            </div>
+            <span class="count-pill" id="watch-history-count">4 titles</span>
+          </div>
+
+          <!-- Scenario Quick Presets -->
+          <div class="preset-selector-box">
+            <label class="control-label">Or Load a Curated Viewing Pattern:</label>
+            <div class="scenario-buttons-list" id="scenario-buttons-list">
+              <!-- Dynamically populated scenario buttons -->
+            </div>
+          </div>
+
+          <!-- Active Watch Items List -->
+          <div class="history-items-container" id="history-items-container">
+            <!-- Dynamically populated watch items -->
+          </div>
+
+          <!-- Add Movie to History Box -->
+          <div class="add-title-box">
+            <label class="control-label">Add a Movie/Series from Catalog:</label>
+            <div class="add-row">
+              <select id="select-catalog-add" class="dropdown-input">
+                <!-- Dynamically populated with Netflix catalog titles -->
+              </select>
+              <button class="btn-add-action" id="btn-add-title-to-history">+ Add</button>
+            </div>
+            <div class="add-options-row">
+              <select id="select-add-completion" class="dropdown-small">
+                <option value="1.0">Finished (100%)</option>
+                <option value="0.75">Watched (75%)</option>
+                <option value="0.2">Dropped Early (20%)</option>
+              </select>
+              <select id="select-add-rating" class="dropdown-small">
+                <option value="DoubleThumbsUp">Double Thumbs Up</option>
+                <option value="ThumbsUp" selected>Thumbs Up</option>
+                <option value="ThumbsDown">Thumbs Down</option>
+                <option value="None">No Rating</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Session Context Controls -->
+          <div class="session-context-box">
+            <div class="context-row">
+              <label>Current Device:</label>
+              <select id="device-context-select" class="dropdown-inline">
+                <option value="Smart TV">📺 Smart TV (Living Room)</option>
+                <option value="Mobile">📱 Mobile Phone (On-the-go)</option>
+                <option value="Laptop">💻 Laptop (Personal)</option>
+              </select>
+            </div>
+            <div class="context-row">
+              <label>Session Time:</label>
+              <select id="time-context-select" class="dropdown-inline">
+                <option value="Evening">Evening (Prime Binge Time)</option>
+                <option value="Late Night">Late Night (Solo Watching)</option>
+                <option value="Morning">Morning (Quick Catch-up)</option>
+                <option value="Afternoon">Afternoon (Casual)</option>
+              </select>
+            </div>
+          </div>
+
+          <button class="btn-primary-run" id="btn-recalculate-rankings">
+            <span>⚡ Re-Run GenRec Model</span>
+          </button>
+        </div>
+      </aside>
+
+      <!-- RIGHT COLUMN: RANKED RECOMMENDATIONS & INSPECTOR -->
+      <section class="results-panel">
+        
+        <!-- TELEMETRY & STATUS STRIP -->
+        <div class="telemetry-strip">
+          <div class="telemetry-col">
+            <div class="telemetry-header-action">
+              <span class="telemetry-label">MODEL BACKBONE</span>
+              <button class="btn-token-config awaiting-token" id="btn-open-token-modal" title="Configure Hugging Face Access Token">🔑 Setup Llama 3.2</button>
+            </div>
+            <span class="telemetry-val" id="stat-backbone">Checking...</span>
+          </div>
+          <div class="telemetry-col">
+            <span class="telemetry-label">FORWARD LATENCY</span>
+            <span class="telemetry-val green-text" id="stat-latency">~15.4 ms</span>
+          </div>
+          <div class="telemetry-col">
+            <span class="telemetry-label">CATALOG INTEGRITY</span>
+            <span class="telemetry-val green-text">100% (No Hallucinations)</span>
+          </div>
+          <div class="telemetry-col">
+            <span class="telemetry-label">CANDIDATES EVALUATED</span>
+            <span class="telemetry-val" id="stat-candidate-count">21 Titles</span>
+          </div>
+        </div>
+
+        <!-- EXPLANATION DRAWER (EXPANDS WHEN A MOVIE IS CLICKED) -->
+        <div class="explanation-drawer" id="explanation-drawer" style="display: none;">
+          <div class="drawer-header-row">
+            <div class="drawer-title-group">
+              <span class="drawer-badge">AI REASONING BREAKDOWN</span>
+              <h2 id="drawer-movie-title">Inception (2010)</h2>
+            </div>
+            <button class="close-drawer-btn" id="btn-close-drawer">✕ Close</button>
+          </div>
+
+          <div class="drawer-body">
+            <!-- Plain English Explanation -->
+            <div class="mode-plain-text">
+              <div class="explanation-bubble">
+                <span class="bubble-icon">🎯</span>
+                <div>
+                  <strong>Why was this recommended?</strong>
+                  <p id="drawer-plain-reasoning">Loading reasoning...</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Technical Explanation -->
+            <div class="mode-tech-text" style="display: none;">
+              <div class="tech-math-box">
+                <code>Score = Softmax( ϕ(h_u)ᵀ ψ(e_c) / τ ) = <span id="drawer-raw-score">0.214</span></code>
+                <p>Calculated via single-pass projection of sequence hidden state onto candidate item embedding.</p>
+              </div>
+            </div>
+
+            <!-- ATTENTION ATTRIBUTION: WHICH OF YOUR PAST WATCHES CAUSED THIS? -->
+            <div class="attribution-section">
+              <h4>Which of your past watches contributed most to this pick?</h4>
+              <p class="sub-desc">
+                The model compares the candidate title against each item in your watch history to calculate relative influence:
+              </p>
+              <div class="attribution-bars-list" id="drawer-attribution-list">
+                <!-- Dynamically populated attribution bars -->
+              </div>
+            </div>
+
+            <!-- ACTION: ADD DIRECTLY -->
+            <div class="drawer-actions-row">
+              <button class="btn-drawer-add" id="btn-drawer-add-action">
+                ➕ I just watched this! Add to My History & See Recalculation
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- MAIN RECOMMENDATION CARDS LIST -->
+        <div class="recommendation-shelf-section">
+          <div class="shelf-title-bar">
+            <div>
+              <h2>Ranked Recommendations for You</h2>
+              <p class="shelf-guide-hint">
+                💡 <em>Click any card to inspect why it was picked, or click "+ Add" to simulate watching it!</em>
+              </p>
+            </div>
+            <div class="toggle-wrap">
+              <label class="checkbox-label">
+                <input type="checkbox" id="check-compare-legacy" checked> Show Legacy Popularity Model Rank
+              </label>
+            </div>
+          </div>
+
+          <div class="recommendation-cards-list" id="recommendation-cards-list">
+            <!-- Dynamically populated recommendation cards -->
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- VIEW 2: CONTEXT ENGINEERING STUDIO -->
+  <main class="view-content" id="view-context-studio">
+    <div class="document-page">
+      <div class="doc-header">
+        <span class="doc-kicker">STAGE 1: CONTEXT ENGINEERING</span>
+        <h2>How Watching History Turns Into a Language Prompt</h2>
+      </div>
+
+      <div class="explanation-dual-box">
+        <div class="mode-plain-text">
+          <h3>What is happening here? (Plain English)</h3>
+          <p>
+            Traditional recommender systems turn your watch history into a list of numbers (like <code>[0, 1, 0, 0, 4.2]</code>). This is called "tabular feature engineering". 
+            The problem? Numbers throw away the story! They forget that you watched the finale twice, or that you prefer dark thrillers specifically late at night on your TV.
+          </p>
+          <p>
+            <strong>GenRec's breakthrough</strong> is to keep everything in natural language. It writes a structured story describing your recent sessions and lets a language model read it like a human would.
+          </p>
+        </div>
+
+        <div class="mode-tech-text" style="display: none;">
+          <h3>Technical Formulation</h3>
+          <p>
+            In traditional systems, features are engineered as sparse categorical crosses and aggregated continuous summaries. 
+            GenRec formalizes context through a deterministic verbalization mapping from viewing interaction sequences into structured natural language sequences.
+          </p>
+        </div>
+      </div>
+
+      <!-- INTERACTIVE PROMPT INSPECTOR -->
+      <div class="prompt-inspector-grid">
+        <div class="inspector-card">
+          <div class="card-header-bar">
+            <h4>The Generated Natural Language Prompt</h4>
+            <span class="chip-count" id="token-word-count">Prompt Tokens</span>
+          </div>
+          <div class="prompt-preview-content" id="prompt-preview-content">
+            Loading generated prompt...
+          </div>
+        </div>
+
+        <div class="inspector-card">
+          <div class="card-header-bar">
+            <h4>What the Legacy Feature Store Would Have Produced</h4>
+            <span class="chip-count red-chip">Lossy Tabular Numbers</span>
+          </div>
+          <div class="legacy-features-box">
+            <pre id="legacy-tabular-features-raw">Loading legacy tabular representation...</pre>
+          </div>
+          <div class="lossy-explanation">
+            <strong>What was lost?</strong> The legacy numbers show you watched sci-fi shows, but completely erased <em>which order you watched them in</em> and <em>which one you loved enough to rewatch</em>.
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- VIEW 3: SERVING LATENCY & FLAMEGRAPH -->
+  <main class="view-content" id="view-serving-latency">
+    <div class="document-page">
+      <div class="doc-header">
+        <span class="doc-kicker">STAGE 2: SERVING EFFICIENCY</span>
+        <h2>Why GenRec Uses "Prefill-Only" Instead of Normal Text Generation</h2>
+      </div>
+
+      <div class="explanation-dual-box">
+        <div class="mode-plain-text">
+          <h3>The Latency & Hallucination Problem (Plain English)</h3>
+          <p>
+            When you use ChatGPT or Claude, the AI writes out words one-by-one. That takes 1 to 2 seconds. 
+            If Netflix took 2 seconds to load your homepage every time you clicked a row, the app would feel broken. 
+            Furthermore, a text-generating AI might make up a movie that doesn't exist, or recommend a movie Netflix doesn't own!
+          </p>
+          <p>
+            <strong>How GenRec fixes this:</strong> GenRec completely disables word generation. It looks at your prompt in a single step (the <strong>prefill</strong> pass), generates a mathematical fingerprint of your taste, and compares it to all movies in the catalog at once. This takes only <strong>15 milliseconds</strong> and guarantees 0% hallucinations.
+          </p>
+        </div>
+
+        <div class="mode-tech-text" style="display: none;">
+          <h3>Serving Complexity Formulation</h3>
+          <p>
+            Autoregressive generation incurs computational complexity O(N · L) where N is generated token length and L is context length, requiring N sequential memory round-trips.
+            Prefill-only scoring operates in O(1) decode steps by taking the prompt sequence hidden state and projecting onto candidate catalog embeddings.
+          </p>
+        </div>
+      </div>
+
+      <!-- LIVE BENCHMARK RUNNER -->
+      <div class="flamegraph-box">
+        <div class="flamegraph-controls">
+          <button class="btn-run-benchmark" id="btn-run-live-benchmark">
+            ⏱️ Run Live 15-Iteration Speed Test (Measures Actual Local Execution)
+          </button>
+          <span class="bench-status-msg" id="benchmark-status-msg">Ready to benchmark execution times.</span>
+        </div>
+
+        <!-- Flamegraph Comparison Bars -->
+        <div class="flamegraph-visual">
+          <div class="flame-row">
+            <div class="flame-meta">
+              <strong>GenRec Prefill-Only Scoring</strong>
+              <span class="flame-latency green-text" id="flame-prefill-val">~15.2 ms P50</span>
+            </div>
+            <div class="flame-bar-track">
+              <div class="flame-seg seg-green" style="width: 15%;">1 Single Forward Pass (15ms)</div>
+            </div>
+            <span class="flame-tag ok-tag">✓ Fits in Netflix 25ms SLA</span>
+          </div>
+
+          <div class="flame-row">
+            <div class="flame-meta">
+              <strong>Standard Text Generation (Autoregressive)</strong>
+              <span class="flame-latency orange-text" id="flame-autoreg-val">~580.0 ms P50</span>
+            </div>
+            <div class="flame-bar-track">
+              <div class="flame-seg seg-orange" style="width: 100%;">15 Sequential Token-by-Token Decoding Passes (580ms)</div>
+            </div>
+            <span class="flame-tag bad-tag">✗ Breaches SLA by 23×</span>
+          </div>
+        </div>
+
+        <div class="speedup-callout">
+          <span class="speedup-factor-num" id="flame-speedup-factor">38×</span>
+          <div>
+            <strong>Serving Latency Acceleration Factor</strong>
+            <p>GenRec preserves the semantic reasoning of language models while matching the latency of traditional lightweight rankers.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- VIEW 4: 40× SAMPLE EFFICIENCY -->
+  <main class="view-content" id="view-sample-efficiency">
+    <div class="document-page">
+      <div class="doc-header">
+        <span class="doc-kicker">STAGE 3: EMPIRICAL SCALING LAWS</span>
+        <h2>Why GenRec Needs 40× Less Data Than Traditional Models</h2>
+      </div>
+
+      <div class="explanation-dual-box">
+        <div class="mode-plain-text">
+          <h3>What does "Sample Efficiency" and "MRR" mean? (Plain English)</h3>
+          <p>
+            <strong>What is MRR (Mean Reciprocal Rank)?</strong><br>
+            MRR is the standard way to grade recommendation systems. Think of it like a search engine grade:
+            If the movie you actually wanted to watch was placed in the <strong>#1 slot</strong>, the score is <strong>1.0</strong> (an A+).
+            If it was in the <strong>#2 slot</strong>, the score is <strong>0.5</strong>.
+            If it was buried way down at <strong>#10</strong>, the score drops to <strong>0.1</strong>.<br>
+            A higher MRR means the right movie appears right at the top of your screen where you actually see it.
+          </p>
+          <p>
+            <strong>Why does GenRec need 40× less data?</strong><br>
+            Old machine learning models start out knowing nothing about the real world. They don't know that "space travel" relates to "black holes" until they observe millions of humans clicking both.
+            Because GenRec starts with a pre-trained foundation language model, it already understands language, themes, and narrative concepts. It learns user preferences with a tiny fraction of the data.
+          </p>
+        </div>
+
+        <div class="mode-tech-text" style="display: none;">
+          <h3>Mathematical & Scaling Formulation</h3>
+          <p>
+            Given a set of recommendation queries Q, Mean Reciprocal Rank is the mean of reciprocal ranks.
+            Traditional deep tabular models suffer from high sample complexity due to randomly initialized sparse embedding tables for item IDs.
+            GenRec benefits from transfer learning: foundation model weights provide an informative prior over narrative semantics, drastically reducing sample requirements.
+          </p>
+        </div>
+      </div>
+
+      <!-- INTERACTIVE DATA SLIDER -->
+      <div class="slider-demo-card">
+        <h3>Interactive Simulation: Performance vs. Available Training Data</h3>
+        <p class="slider-sub">
+          Move the slider below to simulate training on only 10% vs 50% vs 100% of historical clicks:
+        </p>
+
+        <div class="slider-control-row">
+          <input type="range" min="10" max="100" step="15" value="25" id="efficiency-slider" class="range-input">
+          <div class="ticks-row">
+            <span>10% Data</span>
+            <span>25% Data (GenRec Parity Point)</span>
+            <span>50% Data</span>
+            <span>75% Data</span>
+            <span>100% Data</span>
+          </div>
+        </div>
+
+        <div class="score-comparison-grid">
+          <div class="score-card genrec-card">
+            <span class="score-card-title">GenRec (LLM-Backed)</span>
+            <div class="big-mrr-val" id="disp-genrec-mrr">0.710 MRR</div>
+            <p>At 25% data, GenRec is already at 85% of peak performance.</p>
+          </div>
+
+          <div class="score-card legacy-card">
+            <span class="score-card-title">Legacy Tabular Deep Model</span>
+            <div class="big-mrr-val" id="disp-legacy-mrr">0.440 MRR</div>
+            <p>Suffers heavily from data sparsity and cold start.</p>
+          </div>
+
+          <div class="score-card advantage-card">
+            <span class="score-card-title">GenRec Advantage ("Performance Delta")</span>
+            <div class="big-mrr-val green-text" id="disp-delta-val">+61.4% Better</div>
+            <p>What this delta means: GenRec places your preferred movie 2 to 3 slots higher on the screen.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- VIEW 5: PAPER BLUEPRINT -->
+  <main class="view-content" id="view-architecture">
+    <div class="document-page">
+      <div class="doc-header">
+        <span class="doc-kicker">RESEARCH ARCHITECTURE</span>
+        <h2>The Three Phases of GenRec (arXiv:2608.10257)</h2>
+        <p class="doc-sub">Official workflow published by Netflix Research in August 2026.</p>
+      </div>
+
+      <div class="blueprint-columns">
+        
+        <div class="blueprint-card">
+          <div class="bp-stage-tag">STAGE 01</div>
+          <h3>Context Verbalization</h3>
+          <p class="bp-desc">
+            Converts member viewing histories into structured natural language sequences.
+          </p>
+          <div class="bp-code-example">
+            [MEMBER CONTEXT]<br>
+            Device: Smart TV | Time: Evening<br>
+            1. "Dark" (Completed 98%, ThumbsUp)<br>
+            2. "Stranger Things" (Completed 100%)
+          </div>
+        </div>
+
+        <div class="blueprint-card">
+          <div class="bp-stage-tag">STAGE 02</div>
+          <h3>Two-Phase Training</h3>
+          <p class="bp-desc">
+            <strong>Phase 1:</strong> Foundation Domain Adaptation on catalog narratives.<br>
+            <strong>Phase 2:</strong> Reward-weighted listwise ranking loss optimizing long-term member satisfaction.
+          </p>
+          <div class="bp-code-example">
+            Loss = -∑ r_b · log( P(target | u) )<br>
+            r_b = Reward weight from completion %
+          </div>
+        </div>
+
+        <div class="blueprint-card highlight-card">
+          <div class="bp-stage-tag">STAGE 03</div>
+          <h3>Prefill-Only Production Serving</h3>
+          <p class="bp-desc">
+            Processes prompt in a single forward pass. Evaluates dot-product similarity against candidate embeddings in &lt;20 milliseconds.
+          </p>
+          <div class="bp-code-example">
+            s(u, c_i) = ϕ(h_u)ᵀ ψ(e_c) / τ<br>
+            100% Catalog integrity. Zero text generation.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+    <!-- MODAL: HUGGING FACE TOKEN / BACKBONE SETUP -->
+  <div class="modal-backdrop" id="modal-token-setup" style="display: none;">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="modal-icon">🦙</span>
+          <div>
+            <h3>Configure Meta Llama 3.2-1B Backbone</h3>
+            <p class="modal-subtitle">Gated Hugging Face Foundation Model Integration</p>
+          </div>
+        </div>
+        <button class="modal-close-btn" id="btn-close-token-modal">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="backbone-status-box">
+          <span class="status-label">Current Backbone:</span>
+          <span class="status-val-pill" id="modal-active-backbone-pill">Checking...</span>
+        </div>
+
+        <div class="setup-steps-list">
+          <div class="setup-step">
+            <span class="step-badge">1</span>
+            <div class="step-desc">
+              <strong>Accept Meta Llama 3.2 License on Hugging Face</strong>
+              <p>Meta requires accepting their open research license before weights can be downloaded. Visit <a href="https://huggingface.co/meta-llama/Llama-3.2-1B" target="_blank" rel="noopener">meta-llama/Llama-3.2-1B</a> and click <em>"Agree and access repository"</em>.</p>
+            </div>
+          </div>
+          
+          <div class="setup-step">
+            <span class="step-badge">2</span>
+            <div class="step-desc">
+              <strong>Enter your Hugging Face Access Token</strong>
+              <p>Copy your User Access Token (with <code>Read</code> permissions) from <a href="https://huggingface.co/settings/tokens" target="_blank" rel="noopener">Hugging Face Settings &gt; Tokens</a>.</p>
+              <div class="token-input-row">
+                <input type="password" id="input-hf-token" placeholder="hf_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" autocomplete="off" />
+                <button type="button" class="btn-toggle-token-vis" id="btn-toggle-token-vis" title="Toggle token visibility">👁</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="token-alert-box">
+          <span class="alert-icon">🔒</span>
+          <div>
+            <strong>100% Local &amp; Private:</strong> Your token is stored locally inside your project's <code>.env</code> file on your Mac and used exclusively by this local backend to authenticate with Hugging Face Hub. It is never logged or sent to any third party.
+          </div>
+        </div>
+
+        <div id="token-feedback-area" class="token-feedback-area" style="display: none;"></div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="secondary-btn" id="btn-cancel-token">Cancel</button>
+        <button class="primary-btn" id="btn-save-token">
+          <span id="btn-save-token-text">Save &amp; Activate Llama 3.2</span>
+          <span id="btn-save-token-spinner" style="display: none;">⏳ Downloading &amp; Loading Model...</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
